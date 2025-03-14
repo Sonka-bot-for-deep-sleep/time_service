@@ -9,9 +9,10 @@ import (
 )
 
 type repository interface {
-	GetGoingToBedTime(ctx context.Context, tgID string) (time.Time, error)
-	GetWakeupTime(ctx context.Context, tgID string) (time.Time, error)
-	SetWakeupTime(ctx context.Context, time dto.SetWakeupTime) error
-	SetGoingToBedTime(ctx context.Context, time dto.SetGoingToBedTime) error
+	CreateTime(ctx context.Context, user *dto.CreateUser) error
+	GetGoingToBedTime(ctx context.Context, tgID string) (*time.Time, error)
+	GetWakeupTime(ctx context.Context, tgID string) (*time.Time, error)
 	GetTime(ctx context.Context, tgID string) (*models.Time, error)
+	UpdateWakeupTime(ctx context.Context, time dto.UpdateWakeupTime) error
+	UpdateGoingToBedTime(ctx context.Context, time dto.UpdateGoingToBedTime) error
 }
